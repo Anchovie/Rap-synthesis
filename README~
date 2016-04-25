@@ -1,0 +1,111 @@
+TEXT TO SPEECH TO RAP SYNTHESIS
+Panajis Rantala
+
+##########################################
+USAGE: python3 espeak.py
+
+1: choose a lyric text file (from list) to be synthesized.
+   Before playback inquires if you want to delete the 
+   (now useless) .wav files created in synthesis. 
+   Resulting concatenated lyric file <song_name>.wav
+   is saved in the working directory.
+
+2: Choose a synthesized lyric wav-file (from list) to be mixed with beat.
+   Choose a accompanying beat wav-file (from list).
+   Program mixes and plays the output, saves the mixed song
+   into /songs/<song_name+beat_name>.wav
+
+3: Create phonemedata for lyric text file. No interaction with synthesis,
+   just for reference.
+
+NOTE!!!!
+Only works with shell based terminals/OS', trivial to change but meh
+(Uses ls, rm, aplay)
+
+##########################################
+EXAMPLE RUN:
+
+python3 espeak.py
+1
+XTRA
+
+2
+XTRA
+100low
+
+#########################################
+ABOUT FILES:
+
+Lyrics are to be in extensionless format. The name is used as the
+song name in synthesis. First line specifies BPM (e.g. 100), after
+that comes lyrics. One line is treated as a one line in song which should
+fit in one bar. Separate rhyming part with underscore "_" from the first part.
+Synthesis supports empty lines as one bar of silence (useful when mixing with beat).
+NO ERROR HANDLING, REMEMBER TO SPECIFY BPM AS FIRST LINE AND INCLUDE UNDERSCORE IN
+EVERY LYRIC LINE!
+
+Synthesized wave-files. Depending on "mbrola"-flag, which specifies the voicebank
+used, the wavs are created with 1 channel, 2 bit audio depth, framerate of EITHER 
+22050Hz (espeak) or 16000Hz (mbrola). THIS HAS TO CORRESPOND TO THE FRAMERATE OF 
+ACCOMPANYING BEAT WAV! Use xxxhigh for espeak voices (mbrola=False), and xxxlow 
+for mbrola voices (mbrola=True), where xxx is the bpm (and how my beats are named). 
+By default mbrola is True.
+
+Accompanying beat wave-files. Ripped from youtube and converted to .wav. As stated 
+above the filename consists of bpm <xxx> and framerate <high> or <low>. For example 
+when using the program with default options (mbrola=True), choose a lyricfile first,
+and then the beat file with corresponding BPM and low framerate (XTRA -> 100low).
+Sources for most beatfiles can be found in /mp3/BEAT REFERENCES.  
+
+Mixed songs (lyrics and beat) are saved in the "songs" directory, and retain the 
+wave parameters specified in synthesis. Named with <song_name>+<beat_name>.wav.
+
+Wavs created during synthesis. The program creates a wav-file for every lyric segment
+(first part, rhyming part, doubled rhyme, trimmed wavs). The working directory is 
+populated by these and it can get quite messy during runtime. The program automatically
+deletes these temporary wavs after execution. The wavs are named with 
+<song_name>-<line_number>-<[0 or 1](for first/rhymepart)>[-DELAY,DOUBLED,-TRIM-,etc].wav
+Padding for samples are named with <silence>-<line_number>. All these can be ignored.
+
+###############################################
+OPTIONS:
+
+(Default values in code, toggleable via the action chooser during runtime.)
+
+OPTION	       DEFAULT   DESCRIPTION
+'mbrola'       True      Defines the voice used in synthesis. If false -> espeak 
+'augment'      False     Augments the phonemes by accenting first syllable. not good
+'double'       True      Creates double tracking for rhymepart.
+'constant_WPM' True      Instead of using per line calculated WPMs, uses a mean
+			 with some tweaking.
+'trim'         True	 espeak leaves some silence in the beginning and end of 
+			 synthesized files. This removes it to ensure wpm 
+			 calculations work.
+'start_silence'False     Instead of adding silence in between the first and rhyming
+			 part, this flag creates it in the beginning of the line.
+			 Doesn't sound good as is but could be incorporated with
+			 some testing to the wpm calculations.  
+###############################################
+DIRECTORIES:
+
+lyrics: Put here all your lyricfiles (text)
+beats:  Put here all your instrumental beats (wav)
+songs:  Here the program will output mixed songs (wav)
+	(Populated automatically, don't put anything here)
+mp3:    Not used for anything. Houses the mp3-versions of beats.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

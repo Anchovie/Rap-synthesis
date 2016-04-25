@@ -1,0 +1,101 @@
+
+(1,2 difference between espeak and mbrola)
+Track1:
+Jedi+90high2.wav
+Augment, Constant_WPM, Double, Trim
+
+Track2:
+Jedi+90low2.wav
+Mbrola, Augment, Constant_WPM, Double, Trim
+
+
+(3,4 difference with start_silence)
+Track3:
+AXIS+100high.wav
+Augment, Constant_WPM, Double, Trim
+
+Track4:
+AXIS+100high.wav
+Augment, Constant_WPM, Double, Trim, Start_silence
+
+
+
+-----------------------------------------------------
+NEW SONGS:
+
+Track 5:
+Lyrics: Jedi Mind Tricks (Vinnie Paz + Stoupe) feat. Shara Worden - Razorblade Salvation 
+Beat: NeirDa Prod - Hoyfeun (90 BPM) FREE BEAT 
+Vocals: eSpeak
+
+Showcase mbrola voice. "the best"
+Jedi+90low2.wav
+->Mbrola<-, Augment, Constant_WPM, Double, Trim.
+WPMTHRESHOLD = 40;
+WPMTOOSMALL = 90;
+WPMTOOHIGH = 200;
+WPMBOOST = -75; <------------
+DOUBLEDELAY = 0.015;
+DBCHUNKSIZE = 50;
+
+--------------------------------------
+Track 4:
+Lyrics: Puff Daddy ft. Faith Evans - I'll Be Missing You
+Beat: EkkoProductions - Death and Taxes
+Vocals: eSpeak
+
+Regular espeak voice with everything.
+Puff+105high.wav
+Augment, Constant_WPM, Double, Trim.
+WPMTHRESHOLD = 40;
+WPMTOOSMALL = 90;
+WPMTOOHIGH = 200;
+WPMBOOST = -55;
+DOUBLEDELAY = 0.015;
+DBCHUNKSIZE = 50;
+---------------------------------
+Track 3:
+Lyrics: Ice Cube - Gangsta Rap Made Me Do It
+Beat: stemvdstraatbeats - Welcome To Life (Free Hip-Hop Beat)
+Vocals: eSpeak
+
+eSpeak with start silence
+ICE+95high.wav
+Augment, Constant_WPM, Double, Trim, start_silence
+WPMTHRESHOLD = 40;
+WPMTOOSMALL = 90;
+WPMTOOHIGH = 200;
+WPMBOOST = -55;
+DOUBLEDELAY = 0.015;
+DBCHUNKSIZE = 50;
+---------------------------------
+Track 2:
+Lyrics: DeepBeat - Eric Malmi et. al.
+Beat: stemvdstraatbeats - With Me 
+Vocals: eSpeak
+
+espeak with no double or augment
+AXIS+100high.wav
+Constant_WMP, Trim
+WPMTHRESHOLD = 40;
+WPMTOOSMALL = 90;
+WPMTOOHIGH = 200;
+WPMBOOST = -55;
+DOUBLEDELAY = 0.015;
+DBCHUNKSIZE = 50;
+------------------------------------
+Track 1 (Control):
+Beat: stemvdstraatbeats - "BOUNCING BACK" (104 BPM) HIP-HOP SAMPLE BEAT
+Lyrics: Vinnie Paz "Is Happiness Just A Word?" feat. Yes Alexander
+Vocals: eSpeak
+
+Raw espeak with just the beat.
+happinessFINAL+104high.wav
+All false
+WPMTHRESHOLD = 40;
+WPMTOOSMALL = 90;
+WPMTOOHIGH = 200;
+WPMBOOST = -55;
+DOUBLEDELAY = 0.015;
+DBCHUNKSIZE = 50;
+
